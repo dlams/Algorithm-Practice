@@ -23,7 +23,7 @@ def bfs(x, y):
             if nx < 0 or nx >= N or ny < 0 or ny >= M:
                 continue
             # 벽인 경우 무시
-            if graph[x][y] == 0:
+            if graph[nx][ny] == 0: # 원래 x, y로 되었었는데 그게 맞나..?
                 continue
             # 해당 노드를 처음 방문하는 경우에만 최단 거리 기록
             if graph[nx][ny] == 1:
