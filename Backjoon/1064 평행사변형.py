@@ -2,7 +2,6 @@ from math import pow, sqrt
 
 x1, y1, x2, y2, x3, y3 = map(int, input().split())
 
-
 def dr(a, b, c, d):
     return sqrt(pow(d - b, 2) + pow(c - a, 2))
 
