@@ -1,6 +1,14 @@
-from sys import stdin
+# BJ 11444
+# 1_000_000_007로 나눈 나머지를 구해야함.
+# 피사노 주기를 이용한 문제가 아닌 행렬 방식 사용
+# 행렬로 표현하기
+# ( Fn+2 )   ( 1 1 )( Fn+1 )
+# ( Fn+1 ) = ( 1 0 )(  Fn  )
+# 일반화하면,
+# ( Fn+1 Fn )   ( 1 1 )^n
+# ( Fn Fn-1 ) = ( 1 0 )
+# 어떤 수의 K제곱은 O(logK)
 
-input = stdin.readline
 mod = int(1e9) + 7
 
 
@@ -10,7 +18,7 @@ def MatrixProduct(arr1: list[list[int]], arr2: list[list[int]]):
         for j in range(2):
             for k in range(2):
                 answer[i][j] += arr1[i][k] * arr2[k][j]
-            # answer[i][j] %= mod
+            answer[i][j] %= mod
     return answer
 
 
@@ -27,17 +35,6 @@ def fibo(n: int):
         n //= 2
     return ans[0][1]
 
-def binarySearch(n: int):
-    start, end = 0, 100_000
-    while start <= end:
-        mid = (start + end) // 2
-        tmp = fibo(mid)
-        if tmp > n:
-            end = mid - 1
-        else:
-            start = mid + 1
-    return end
 
-for _ in range(int(input())):
-    n = int(input())
-    print(binarySearch(n))
+n = int(input())
+print(fibo(n))
