@@ -1,4 +1,6 @@
 from math import sqrt
+NOT SOLVED
+
 m, M = map(int, input().split())
 
 d = [True] * (M + 1)
