@@ -1,22 +1,23 @@
-from sys import stdin
-input = stdin.readline
+big = []
+small = []
+for _ in range(3):
+    a, b, c, d, pos, e, f, g, h = input().split()
+    if pos == ">":
+        big.append(set([a, b, c, d]))
+        small.append(set([e, f, g, h]))
+    elif pos == "<":
+        small.append(set([a, b, c, d]))
+        big.append(set([e, f, g, h]))
+    else:
+        print("indefinite")
+        exit(0)
 
-def gcd(a: int, b: int):
-    while b != 0:
-        a, b = b, a % b
-    return a
+plus = big[0] & big[1] & big[2]
+minus = small[0] & small[1] & small[2]
+if len(plus) == 1:
+    print(list(plus)[0], "+", sep="")
+elif len(minus) == 1:
+    print(list(minus)[0], "-", sep="")
+else:
+    print("impossible")
 
-def euler_phi(n: int):
-    res = 1
-    if n <= 0:
-        return -1
-    for idx in range(2, n):
-        if gcd(idx, n) == 1:
-            res += 1
-    return res
-
-while 1:
-    n = int(input())
-    if n == 0:
-        break
-    print(euler_phi(n))

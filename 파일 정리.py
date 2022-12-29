@@ -14,14 +14,15 @@ for (root, dir, files) in walk(dir_path):
     for f in files:
         if root.split("/")[-1].isnumeric():
             continue
+        if root.split("/")[-1] == "NOT_SOLVED":
+            continue
         else:
             num, *name = f.split()
             num = int(num)
             move(dir_path + '/' + f, dir_path + '/' + str(num // 1000 * 1000) + '/' + f)
             print(num, "번 문제 : ", *name, " 이동 완료", sep="")
 
-system('git add .')
 _TODAY = datetime.today()
+system('git add .')
 system(f'git commit -m "solve until {_TODAY.year % 100}.{_TODAY.month}.{_TODAY.day}"')
 system('git push')
-print("SUCCESS")
