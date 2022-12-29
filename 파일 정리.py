@@ -14,7 +14,7 @@ for (root, dir, files) in walk(dir_path):
     for f in files:
         if root.split("/")[-1].isnumeric():
             continue
-        if root.split("/")[-1] == "NOT_SOLVED":
+        elif root.split("/")[-1] == "NOT_SOLVED":
             continue
         else:
             num, *name = f.split()
